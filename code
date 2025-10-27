@@ -1,0 +1,79 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class NotesApp {
+    private static final String FILE_NAME = "notes.txt";
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        while (true) {
+            System.out.println("\n===== Notes App =====");
+            System.out.println("1. Write a Note");
+            System.out.println("2. View Notes");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                continue;
+            }
+
+            switch (choice) {
+                case 1:
+                    writeNote();
+                    break;
+                case 2:
+                    readNotes();
+                    break;
+                case 3:
+                    System.out.println("Exiting... Goodbye!");
+                    sc.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice! Please enter 1–3.");
+            }
+        }
+    }
+
+    // ✅ Function to write a note using FileWriter
+    private static void writeNote() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nEnter your note (type 'END' on a new line to finish):");
+
+        try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
+            while (true) {
+                String line = sc.nextLine();
+                if (line.equalsIgnoreCase("END")) break;
+                writer.write(line + "\n");
+            }
+            System.out.println("Note saved successfully to " + FILE_NAME);
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+    // ✅ Function to read notes using BufferedReader
+    private static void readNotes() {
+        System.out.println("\n===== Saved Notes =====");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            String line;
+            boolean empty = true;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                empty = false;
+            }
+            if (empty) {
+                System.out.println("[No notes found!]");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("No notes file found. Create one first!");
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
