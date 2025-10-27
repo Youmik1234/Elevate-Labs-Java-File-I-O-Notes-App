@@ -1,62 +1,23 @@
-Objective
-
-A simple text-based Notes Manager built in Java that demonstrates how to read and write files using FileWriter and BufferedReader.
+This project is a simple text-based Notes Manager built using Java File I/O concepts. It allows users to write, save, and read notes from a text file using the console.
 
 Features
 
- Create and save notes directly from the terminal
- Read all saved notes anytime
- Data stored permanently in a notes.txt file
- Simple menu-driven CLI interface
+Create and save notes to a file
 
-Concepts Used
+Read and display saved notes
 
-Java File I/O (FileWriter, FileReader, BufferedReader)
+Uses FileWriter, FileReader, and BufferedReader for file operations
 
-Loops and Conditional Statements
+Simple and lightweight CLI interface
 
-Exception Handling (try-catch)
+Tools Used
 
-User Input using Scanner
+Java (JDK)
 
-Modular programming with methods
+VS Code / IntelliJ IDEA CE
 
-Project Structure
-NotesApp.java   → Main source code
-notes.txt       → Automatically created file to store notes
-README.md       → Project documentation
+Terminal / Command Prompt
 
-How to Run
-1️ Clone this repository
-git clone https://github.com/<your-username>/<your-repo-name>.git
+Learning Outcome
 
-2️ Navigate to the project folder
-cd <your-repo-name>
-
-3️ Compile the Java file
-javac NotesApp.java
-
-4️ Run the program
-java NotesApp
-
-Example Usage
-===== Notes App =====
-1. Write a Note
-2. View Notes
-3. Exit
-Enter your choice: 1
-
-Enter your note (type 'END' on a new line to finish):
-Learned Java File Handling today.
-FileWriter and BufferedReader are very useful!
-END
-
-Note saved successfully to notes.txt
-
-💡 Future Enhancements
-
-Add delete or search feature
-
-Add date & time for each note
-
-Save notes in different files by topic
+This project provides hands-on experience with Java File Handling and demonstrates how to perform read/write operations using file streams. It reinforces understanding of exception handling and basic Java I/O mechanisms
